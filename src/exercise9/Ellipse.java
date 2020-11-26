@@ -2,29 +2,29 @@ package exercise9;
 
 public class Ellipse {
   private Point startPoint;
-  private double height;
-  private double width;
+  private double a;
+  private double b;
 
   public Ellipse(){
     this.startPoint = new Point(0,0);
-    this.height = 1;
-    this.width = 1;
+    this.a = 1;
+    this.b = 1;
   }
 
-  public Ellipse(Point startPoint, double height, double width){
+  public Ellipse(Point startPoint, double a, double b){
     this.startPoint = new Point(startPoint);
-    this.height = height;
-    this.width = width;
+    this.a = a;
+    this.b = b;
   }
 
   public Ellipse (Ellipse otherEllipse){
     this.startPoint = new Point(otherEllipse);
-    this.height = otherEllipse.height;
-    this.width = otherEllipse.width;
+    this.a = otherEllipse.a;
+    this.b = otherEllipse.b;
   }
 
   public boolean isValid(){
-    return width>0 && height>0;
+    return a>0 && b>0;
   }
 
   public void initialize(){
@@ -32,9 +32,9 @@ public class Ellipse {
             System.out.println("Start point: ");
             startPoint.initialize();
             System.out.print("Enter height: ");
-            this.height = Utils.INPUT.nextDouble();
+            this.a = Utils.INPUT.nextDouble();
             System.out.print("Enter width: ");
-            this.width = Utils.INPUT.nextDouble();
+            this.b = Utils.INPUT.nextDouble();
         } while (!isValid());
   }
 
@@ -43,12 +43,26 @@ public class Ellipse {
 
    }
    public double calculateArea(){
-     return Math.PI*height*width; 
+     return Math.PI*a*b; 
    } 
 
    public String getType(){
-     return (utils.equals(height,width)) ? "Circle" : "Ellipse"; 
+     return (utils.equals(a,b)) ? "Circle" : "Ellipse"; 
    }
+
+   public String toString(){
+     return String.format("%s-[%s,%s], P =%s, A = %s", startPoint, a, b, calculatePerimeter(), calculateArea());
+   }
+  
+  public boolean equals(Ellipse otherEllipse){
+    boolean sameHeight = Utils.equals(a,otherEllipse.a);
+    boolean sameWidth = Utils.equals(b,otherEllipse.b);
+    boolean sameHeightReversed = Utils.equals(a,otherEllipse.b);
+    boolean sameWidthReversed = Utils.equals(b,otherEllipse.a);
+
+    return (sameHeight && sameWidth) || (sameHeightReversed && sameWidthReversed);
+
+  }
 
 
 
