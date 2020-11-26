@@ -47,7 +47,7 @@ public class Ellipse {
    } 
 
    public String getType(){
-     return (utils.equals(a,b)) ? "Circle" : "Ellipse"; 
+     return (Utils.equals(a,b)) ? "Cycle" : "Ellipse"; 
    }
 
    public String toString(){
