@@ -7,7 +7,7 @@ public class EllipseDemo {
 
       Point point2 = new Point(2,3);
       Ellipse ellipse2 = new Ellipse(point2,5,6);
-      Ellipse ellipse3 = new Ellipse(ellipse2);
+      Ellipse ellipse3 = ellipse2;
 
       Ellipse ellipse4 = new Ellipse();
       ellipse4.initialize();
